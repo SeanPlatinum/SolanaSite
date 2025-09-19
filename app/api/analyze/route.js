@@ -231,13 +231,6 @@ async function getTokenHolders(mint) {
   }
 }
 
-// Handle GET requests (required by some Vercel configurations)
-export async function GET() {
-  return Response.json({ 
-    error: "Method not allowed. Use POST with mint address." 
-  }, { status: 405 })
-}
-
 export async function POST(request) {
   const { mint } = await request.json()
   if (!mint) return Response.json({ error: "Missing mint" }, { status: 400 })
